@@ -2,21 +2,20 @@ pipeline {
     agent any
 
     environment {
-        MAVEN_HOME = tool name: 'Maven 3', type: 'hudson.tasks.Maven$MavenInstallation'
+        MAVEN_HOME = tool name: 'Maven'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the source code from your version control system
                 git 'https://github.com/NitishHS/jenkinsBuildtest.git'
             }
         }
         
         stage('Build') {
             steps {
-                // Run the Maven build
                 bat "${MAVEN_HOME}\\bin\\mvn clean install"
+                //sh "${MAVEN_HOME}/bin/mvn clean install"
             }
         }
         
@@ -24,10 +23,10 @@ pipeline {
             steps {
                 // Run the Maven tests
                 bat "${MAVEN_HOME}\\bin\\mvn test"
+                //sh "${MAVEN_HOME}/bin/mvn test"
             }
             post {
                 always {
-                    // Archive test results
                     junit '**/target/surefire-reports/*.xml'
                 }
             }
@@ -35,8 +34,8 @@ pipeline {
 
         stage('Package') {
             steps {
-                // Package the application
                 bat "${MAVEN_HOME}\\bin\\mvn package"
+                //sh "${MAVEN_HOME}/bin/mvn package"
             }
             post {
                 success {
@@ -48,7 +47,6 @@ pipeline {
     
     post {
         always {
-            // Clean up the workspace
             cleanWs()
         }
     }
