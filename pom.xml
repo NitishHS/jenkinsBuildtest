@@ -74,10 +74,27 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.8</version>
                 <executions>
+			<execution>
+                <id>default-instrument</id>
+                <goals>
+                    <goal>instrument</goal>
+                </goals>
+                  </execution>
+                  <execution>
+                <id>default-restore-instrumented-classes</id>
+                <goals>
+                    <goal>restore-instrumented-classes</goal>
+                </goals>
+                  </execution>
                     <execution>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+			     <configuration> 
+                <excludes> 
+                <exclude>*</exclude> 
+                </excludes> 
+                </configuration>    
                     </execution>
                     <execution>
                         <id>jacoco-report</id>
