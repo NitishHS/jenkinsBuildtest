@@ -16,14 +16,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Run the Maven build
-                sh "${MAVEN_HOME}/bin/mvn clean install"
+                bat "${MAVEN_HOME}\\bin\\mvn clean install"
             }
         }
         
         stage('Test') {
             steps {
                 // Run the Maven tests
-                sh "${MAVEN_HOME}/bin/mvn test"
+                bat "${MAVEN_HOME}\\bin\\mvn test"
             }
             post {
                 always {
@@ -36,7 +36,7 @@ pipeline {
         stage('Package') {
             steps {
                 // Package the application
-                sh "${MAVEN_HOME}/bin/mvn package"
+                bat "${MAVEN_HOME}\\bin\\mvn package"
             }
             post {
                 success {
