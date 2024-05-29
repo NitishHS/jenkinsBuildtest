@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from your version control system
-                git 'https://your-repository-url.git'
+                git 'https://github.com/NitishHS/jenkinsBuildtest.git'
             }
         }
         
