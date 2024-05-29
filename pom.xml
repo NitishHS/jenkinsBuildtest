@@ -65,6 +65,7 @@
                 <skipTests>false</skipTests>
                 <testFailureIgnore>true</testFailureIgnore>
                 <forkMode>once</forkMode>
+		<redirectTestOutputToFile>true</redirectTestOutputToFile>
             </configuration>
 		</plugin> 
 
