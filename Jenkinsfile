@@ -14,8 +14,8 @@ pipeline {
         
         stage('Build') {
             steps {
-                bat "${MAVEN_HOME}\\bin\\mvn clean install sonar:sonar"
-                //sh "${MAVEN_HOME}/bin/mvn clean install sonar:sonar"
+                bat "${MAVEN_HOME}\\bin\\mvn clean install "
+                //sh "${MAVEN_HOME}/bin/mvn clean install "
             }
         }
         
